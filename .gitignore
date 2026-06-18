@@ -203,6 +203,13 @@ cython_debug/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
 
+# Virtual environment
+myenv/
+
+# Generated / large data files (tracked via Git LFS or excluded)
+*.pkl
+ExtractedTextFromPDF.txt
+
 # Ruff stuff:
 .ruff_cache/
 
