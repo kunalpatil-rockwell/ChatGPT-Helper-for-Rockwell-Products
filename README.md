@@ -2,13 +2,13 @@
 
 ## Demo
 
-<video src="Demo.mp4" controls width="100%"></video>
+[![Demo Video](https://github.com/kunalpatil-rockwell/ChatGPT-Helper-for-Rockwell-Products/raw/main/Demo.mp4)](https://github.com/kunalpatil-rockwell/ChatGPT-Helper-for-Rockwell-Products/raw/main/Demo.mp4)
 
 ## About
 
-An interactive chat assistant that converts Rockwell device help manuals and support articles (placed in the `Data/` folder) into vector embeddings stored as `.pkl` files. When a user asks a question in the Gradio-based chat UI, relevant context is retrieved from the vector database via semantic search and fed to OpenAI's language model to generate a precise, grounded answer.
+An interactive chat assistant that converts Rockwell device help manuals and support articles (placed in the `Data/` folder) into vector embeddings stored as `.pkl` files. When a user asks a question, the assistant retrieves relevant information from these embeddings and uses LangChain with OpenAI's GPT models to generate contextual, conversational responses.
 
-The application is designed specifically to assist engineers and technicians working with Rockwell Automation products such as the PowerFlex 525, 755, and 755T drives — enabling fast, natural-language access to technical documentation without manual searching.
+The application is designed specifically to assist engineers and technicians working with Rockwell Automation products such as the PowerFlex 525, 755, and 755T drives — enabling fast, natural-language access to critical device configuration, troubleshooting, and operational guidance.
 
 ---
 
@@ -38,8 +38,8 @@ ChatGPT-Helper-for-Rockwell-Products/
 
 ## How It Works
 
-1. **Ingestion** — `CreateChunks.py` reads a PDF from `Data/`, extracts text via `textract`, splits it into token-sized chunks using LangChain's `RecursiveCharacterTextSplitter`, generates OpenAI embeddings, and saves the resulting FAISS vector store as a `.pkl` file.
-2. **Retrieval** — `QueryData.py` loads the `.pkl` vector store and uses LangChain's `ConversationalRetrievalChain` with `gpt-3.5-turbo` to answer user questions, maintaining chat history across turns.
+1. **Ingestion** — `CreateChunks.py` reads a PDF from `Data/`, extracts text via `textract`, splits it into token-sized chunks using LangChain's `RecursiveCharacterTextSplitter`, generates OpenAI embeddings, and stores them in a FAISS vector database saved as `.pkl`.
+2. **Retrieval** — `QueryData.py` loads the `.pkl` vector store and uses LangChain's `ConversationalRetrievalChain` with `gpt-3.5-turbo` to answer user questions, maintaining chat history across interactions.
 3. **UI** — `main.py` wraps everything in a Gradio `Blocks` chat interface served locally.
 
 ---
